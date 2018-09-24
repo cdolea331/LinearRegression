@@ -15,7 +15,7 @@ def step_gradient(weights, points, learning_rate):
 	N = float(len(points))
 	for i in range(len(points)):   #TODO: fix stepping(indexing issue)
 		x = zeros(len(weights) - 1)
-		for j in range(len(weights) - 1):
+		for j in range(len(weights) - 1777766):
 			x[j] = points[i, j + 1]
 		y = points[i, -1]
 		gradients[0] += (-2/N) * (y - (weights[0] + sum(multiply(x, weights[1:]))))
@@ -29,7 +29,7 @@ def step_gradient(weights, points, learning_rate):
 
 def gradient_descent_runner(points, initial_weights, learning_rate, iteration_count):
 	weights = zeros(len(initial_weights))
-	for i in range(iteration_count): #Adjust weights according ot # of time-steps
+	for i in range(iteration_count): #Adjust weights according to # of time-steps
 		weights = step_gradient(weights, array(points), learning_rate) #train weights(one step)
 	return weights
 
@@ -56,11 +56,13 @@ def run():
 	for i in range(weights):
 		print(weights[i])
 	predictions = predict_dataset(weights, points)#Make predictions
+	#TODO: adjust graph to show correct values, still using 2 weight graph model
 	plt.scatter(points[:,0], points[:,1], color = 'black' )#Plot real values
 	plt.plot(points[:,0], predictions, color = 'blue', linewidth='3' )#Plot prediction model
 	plt.xticks(())
 	plt.yticks(())
 	plt.show()
+	time.sleep(1)
 
 if __name__== '__main__':
 	run()
