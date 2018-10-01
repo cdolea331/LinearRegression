@@ -22,7 +22,7 @@ def predict_dataset(X, W):
 
 
 def run():
-	inputs = genfromtxt('data.csv', delimiter = ',') #Read in the data from data.csv(scores vs hours studied)
+	inputs = genfromtxt('data.csv', delimiter = ',') #Read in the data from data.csv
 	X = inputs[:,:-1] #All entries save the last are features, store them in a matrix m x (n - 1) where inputs is an mxn matrix
 	Y = zeros((len(X), 1))#Initialize Y as a m x 1(m = # of entries) column vector
 	Y[:,0] = array(inputs[:,-1]) #All results lie in the last column of the inputs, save them in a m x 1 column vector 
@@ -37,9 +37,9 @@ def run():
 	print("After {0} iterations: error: {1}, \nWeights:\n{2}".format(iteration_count, compute_loss(X, Y, W), W))
 	predictions = predict_dataset(X, W)#Make predictions
 	error = abs(predictions - Y)
-	plt.plot(Y, color = 'black', linewidth = '1', label = 'Actual GPA' )#Plot real values
-	plt.plot(predictions, color = 'blue', linewidth='1', label = 'Predicted GPA' )#Plot prediction model
-	plt.plot(error, color = 'red', linewidth='1', label = 'error' )#Plot prediction model
+	plt.plot(Y, color = 'black', linewidth = '1', label = 'Actual values' )#Plot real values
+	plt.plot(predictions, color = 'blue', linewidth='1', label = 'Predicted values' )#Plot prediction model
+	plt.plot(error, color = 'red', linewidth='1', label = 'Error' )#Plot prediction model
 	plt.legend()
 	plt.show()
 
